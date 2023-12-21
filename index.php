@@ -61,7 +61,7 @@
                 <div class="pt-9 mt-10 mx-auto mb-auto h-full min-h-[84vh] p-2 rounded-lg">
                     <div>
                         <div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-                            <div class="card relative flex flex-col bg-clip-border rounded-xl text-gray-700 shadow-md">
+                            <div class="card relative flex flex-col bg-clip-border rounded-xl shadow-md">
                                 <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" height="200px" width="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -85,7 +85,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="card relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                            <div class="card relative flex flex-col bg-clip-border rounded-xl shadow-md">
                                 <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="currentColor" class="w-6 h-6 text-white">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -115,7 +115,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class=" card relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                            <div class="card relative flex flex-col bg-clip-border rounded-xl shadow-md">
                                 <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6 text-white">
                                         <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"></path>
@@ -133,7 +133,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="card relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                            <div class="card relative flex flex-col bg-clip-border rounded-xl shadow-md">
                                 <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-orange-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
