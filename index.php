@@ -13,36 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="js/tailwind.config.js"></script>
+    <script src="js/system.js"></script>
     <!-- Required the tailwind cli -->
     <?php require 'css/tailwindcss.php'; ?>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: "#da373d",
-                    },
-                },
-            },
-            darkMode: 'class',
-
-        };
-    </script>
-
-
-    <script>
-        if (
-            localStorage.getItem("color-theme") === "dark" ||
-            (!("color-theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    </script>
 
 </head>
 
