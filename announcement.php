@@ -35,17 +35,17 @@
 
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
             <main>
-                <<div class="container mx-auto p-4">
+                <div class="container p-4 mx-auto">
                     <div class="mb-4">
                         <ul class="flex border-b">
-                            <li class="-mb-px mr-1">
+                            <li class="mr-1 -mb-px">
                                 <button id="listTab"
-                                    class="bg-white inline-block py-2 px-4 text-gray-900 hover:text-blue-800 font-semibold dark:bg-gray-800 dark:text-white duration-500 rounded-md"
+                                    class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white"
                                     onclick="switchTab('list')">List Announcements</button>
                             </li>
                             <li class="mr-1">
                                 <button id="createTab"
-                                    class="bg-white inline-block py-2 px-4 text-gray-900 hover:text-blue-800 font-semibold dark:bg-gray-800 dark:text-white duration-500 rounded-md"  
+                                    class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white"  
                                     onclick="switchTab('create')">Create Announcement</button>
                             </li>
                         </ul>
@@ -53,22 +53,22 @@
 
                     <div id="listAnnouncements">
                         <!-- List of Announcements -->
-                        <div class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 dark:bg-gray-800">
-                            <h2 class="text-xl mb-4 dark:text-white">Announcements</h2>
+                        <div class="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                            <h2 class="mb-4 text-xl dark:text-white">Announcements</h2>
                             <div class="overflow-x-auto">
                                 <table class="min-w-full leading-normal ">
                                     <thead>
                                         <tr>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider dark:bg-gray-700">
+                                                class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase bg-gray-100 border-b-2 border-gray-200 dark:bg-gray-700">
                                                 Title
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider dark:bg-gray-700">
+                                                class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase bg-gray-100 border-b-2 border-gray-200 dark:bg-gray-700">
                                                 Date
                                             </th>
                                             <th
-                                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider dark:bg-gray-700">
+                                                class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase bg-gray-100 border-b-2 border-gray-200 dark:bg-gray-700">
                                                 Actions
                                             </th>
                                         </tr>
@@ -76,21 +76,21 @@
                                     <tbody class="">
                                         <!-- Repeat this block for each announcement -->
                                         <tr>
-                                            <td class="px-5 py-5 bg-white text-sm dark:bg-gray-800">
+                                            <td class="px-5 py-5 text-sm bg-white dark:bg-gray-800">
                                                 <div class="flex items-center">
                                                     <div class="ml-3">
-                                                        <p class="text-gray-900 whitespace-no-wrap dark:text-white font-bold">
+                                                        <p class="font-bold text-gray-900 whitespace-no-wrap dark:text-white">
                                                             Announcement Title Here
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-5 py-5 bg-white text-sm dark:bg-gray-800">
-                                                <p class="text-gray-900 whitespace-no-wrap dark:text-white font-bold">
+                                            <td class="px-5 py-5 text-sm bg-white dark:bg-gray-800">
+                                                <p class="font-bold text-gray-900 whitespace-no-wrap dark:text-white">
                                                     Date Published
                                                 </p>
                                             </td>
-                                            <td class="px-5 py-5 bg-white text-sm dark:bg-gray-800">
+                                            <td class="px-5 py-5 text-sm bg-white dark:bg-gray-800">
                                             <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Edit</button>
                                             <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
                                             </td>
@@ -104,32 +104,32 @@
 
                     <div id="createAnnouncement" class="hidden">
                         <!-- Create Announcement Form -->
-                        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-gray-800 dark:text-white">
-                            <h2 class="text-xl mb-4">Create Announcement</h2>
+                        <div class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md dark:bg-gray-800 dark:text-white">
+                            <h2 class="mb-4 text-xl">Create Announcement</h2>
                             <form action="/path-to-your-backend" method="POST" enctype="multipart/form-data">
                                 <div class="mb-4">
-                                    <label class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2" for="title">
+                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="title">
                                         Title
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:text-gray-200"
+                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:text-gray-200"
                                         id="title" type="text" placeholder="Enter announcement title" required>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2" for="description">
+                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="description">
                                         Description
                                     </label>
                                     <textarea
-                                        class="shadow appearance-none dark:bg-gray-600 dark:text-gray-200 border dark:text-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none dark:bg-gray-600 dark:text-gray-200 dark:text-gray-400 focus:outline-none focus:shadow-outline"
                                         id="description" placeholder="Enter announcement details" rows="4"
                                         required></textarea>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-gray-400" for="imageUpload">
+                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="imageUpload">
                                         Upload Images/Files
                                     </label>
                                     <input
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id="imageUpload" type="file" multiple onchange="previewFiles()">
                                     <div id="preview" class="mt-4">
                                         <!-- Image preview will be displayed here -->
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                                         type="submit">
                                         Publish Announcement
                                     </button>
