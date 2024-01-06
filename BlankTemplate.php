@@ -11,8 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"  rel="stylesheet" /> -->
 
@@ -38,52 +37,49 @@
                 <div class="container p-4 mx-auto">
 
                 </div>
+            </main>
 
+            <?php require 'components/footer.php'; ?>
+        </div>
+    </div>
+    <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
+    <script>
+        function switchTab(tabName) {
+            if (tabName === 'list') {
+                document.getElementById('listAnnouncements').classList.remove('hidden');
+                document.getElementById('createAnnouncement').classList.add('hidden');
+            } else if (tabName === 'create') {
+                document.getElementById('createAnnouncement').classList.remove('hidden');
+                document.getElementById('listAnnouncements').classList.add('hidden');
+            }
+        }
 
+        function previewFiles() {
+            var preview = document.querySelector('#preview');
+            var files = document.querySelector('input[type=file]').files;
 
-</main>
+            function readAndPreview(file) {
+                // Make sure `file.name` matches our extensions criteria
+                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    var reader = new FileReader();
 
-<?php require 'components/footer.php';?>
-</div>
-</div>
-<script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
-<script>
-function switchTab(tabName) {
-if (tabName === 'list') {
-    document.getElementById('listAnnouncements').classList.remove('hidden');
-    document.getElementById('createAnnouncement').classList.add('hidden');
-} else if (tabName === 'create') {
-    document.getElementById('createAnnouncement').classList.remove('hidden');
-    document.getElementById('listAnnouncements').classList.add('hidden');
-}
-}
+                    reader.addEventListener("load", function() {
+                        var image = new Image();
+                        image.height = 100;
+                        image.title = file.name;
+                        image.src = this.result;
+                        preview.appendChild(image);
+                    }, false);
 
-function previewFiles() {
-var preview = document.querySelector('#preview');
-var files = document.querySelector('input[type=file]').files;
+                    reader.readAsDataURL(file);
+                }
+            }
 
-function readAndPreview(file) {
-    // Make sure `file.name` matches our extensions criteria
-    if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-        var reader = new FileReader();
-
-        reader.addEventListener("load", function() {
-            var image = new Image();
-            image.height = 100;
-            image.title = file.name;
-            image.src = this.result;
-            preview.appendChild(image);
-        }, false);
-
-        reader.readAsDataURL(file);
-    }
-}
-
-if (files) {
-    [].forEach.call(files, readAndPreview);
-}
-}
-</script>
+            if (files) {
+                [].forEach.call(files, readAndPreview);
+            }
+        }
+    </script>
 </body>
 
 </html>

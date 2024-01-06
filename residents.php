@@ -35,22 +35,16 @@
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
             <main>
                 <div class="container p-4 mx-auto mt-5">
-                    <div class="mb-4">
-                        <ul class="flex border-b">
-                            <li class="mr-1 -mb-px">
-                                <button id="listTab" class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white" onclick="switchTab('list')">List Residents</button>
-                            </li>
-                            <li class="mr-1">
-                                <button id="createTab" class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white" onclick="switchTab('create')">Add Resident</button>
-                            </li>
-                        </ul>
-                    </div>
+                    
 
-                    <div id="listAnnouncements">
-                        <!-- List of Announcements -->
-
+                    <div id="listResidents">
+                    <h2 class="mb-4 text-xl dark:text-white">Announcements</h2>
+                     
+                
                             <!-- Start coding here -->
                             <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+                           
+
                                 <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                                     <div class="w-full md:w-1/2">
                                         <form class="flex items-center">
@@ -66,7 +60,7 @@
                                         </form>
                                     </div>
                                     <div class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                                        <button type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                        <button id="ResdidentModalButton" data-modal-target="ResdidentModal" data-modal-toggle="ResdidentModal" type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                                             </svg>
@@ -324,48 +318,14 @@
                         </div>
                     </div>
             </main>
-
-            <?php require 'components/footer.php'; ?>
+            
+            <?php require 'components/footer.php';
+                    require 'components/createResident.php';
+                ?>
         </div>
     </div>
     <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
-    <script>
-        function switchTab(tabName) {
-            if (tabName === 'list') {
-                document.getElementById('listAnnouncements').classList.remove('hidden');
-                document.getElementById('createAnnouncement').classList.add('hidden');
-            } else if (tabName === 'create') {
-                document.getElementById('createAnnouncement').classList.remove('hidden');
-                document.getElementById('listAnnouncements').classList.add('hidden');
-            }
-        }
-
-        function previewFiles() {
-            var preview = document.querySelector('#preview');
-            var files = document.querySelector('input[type=file]').files;
-
-            function readAndPreview(file) {
-                // Make sure `file.name` matches our extensions criteria
-                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                    var reader = new FileReader();
-
-                    reader.addEventListener("load", function() {
-                        var image = new Image();
-                        image.height = 100;
-                        image.title = file.name;
-                        image.src = this.result;
-                        preview.appendChild(image);
-                    }, false);
-
-                    reader.readAsDataURL(file);
-                }
-            }
-
-            if (files) {
-                [].forEach.call(files, readAndPreview);
-            }
-        }
-    </script>
+    
 </body>
 
 </html>
