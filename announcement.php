@@ -8,23 +8,90 @@
     <title>Barangy Dashboard | Announcement</title>
 
     <link rel="canonical" href="https://flowbite-admin-dashboard.vercel.app/" />
-
+    <!-- <script src="https://cdn.tiny.cloud/1/46877zyhse80x7h0y2a1cv21dmq25v3t1ndzq6puboorqf9c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+<script src="js/tailwindcss.js"></script>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"  rel="stylesheet" /> -->
-
+    <script src="vendor/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="css/profile.css">
     <script src="js/tailwind.config.js"></script>
     <script src="js/system.js"></script>
     <!-- Required the tailwind cli -->
-    <?php require 'css/tailwindcss.php'; ?>
+    <?php require 'css/tailwindcss.php';
+    require 'config.php';
+    ?>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-800">
+    <script>
+        // tinymce.init({
+        //     selector: 'textarea#default',
+        //     plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+        //     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        //     tinycomments_mode: 'embedded',
+        //     tinycomments_author: 'Author name',
+        //     mergetags_list: [{
+        //             value: 'First.Name',
+        //             title: 'First Name'
+        //         },
+        //         {
+        //             value: 'Email',
+        //             title: 'Email'
+        //         },
+        //     ],
+        //     ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        //     image_title: true,
+        //     automatic_uploads: true,
+        //     toolbar_sticky: true,
 
+        //       image_advtab: true,
+        //         file_picker_types: 'image',
+        //         file_picker_callback: function (cb, value, meta) {
+        //           var input = document.createElement('input');
+        //           input.setAttribute('type', 'file');
+        //           input.setAttribute('accept', 'image/*');
+
+        //           input.onchange = function () {
+        //             var file = this.files[0];
+        //             var reader = new FileReader();
+
+        //             reader.onload = function () {
+        //               var id = 'blobid' + (new Date()).getTime();
+        //               var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+        //               var base64 = reader.result.split(',')[1];
+        //               var blobInfo = blobCache.create(id, file, base64);
+        //               blobCache.add(blobInfo);
+
+        //               // call the callback and populate the Title field with the file name
+        //               cb(blobInfo.blobUri(), { title: file.name });
+        //             };
+        //             reader.readAsDataURL(file);
+        //           };
+
+        //           input.click();
+        //         },
+        //     ... other options you might want to use
+        // });
+        tinymce.init({
+            selector: '#default',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [{
+                    value: 'First.Name',
+                    title: 'First Name'
+                },
+                {
+                    value: 'Email',
+                    title: 'Email'
+                },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
     <!-- Header  -->
     <?php require_once 'components/header.php'; ?>
     <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
@@ -36,25 +103,116 @@
         <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
             <main>
                 <div class="container p-4 mx-auto">
-                    <div class="mb-4">
-                        <ul class="flex border-b">
-                            <li class="mr-1 -mb-px">
-                                <button id="listTab"
-                                    class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white"
-                                    onclick="switchTab('list')">List Announcements</button>
-                            </li>
-                            <li class="mr-1">
-                                <button id="createTab"
-                                    class="inline-block px-4 py-2 font-semibold text-gray-900 duration-500 bg-white rounded-md hover:text-blue-800 dark:bg-gray-800 dark:text-white"  
-                                    onclick="switchTab('create')">Create Announcement</button>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php if (isset($_GET['create'])) {
 
-                    <div id="listAnnouncements">
-                        <!-- List of Announcements -->
+                    ?>
+                        <div id="AnnouncementModal" class="justify-center w-full overflow-x-hidden overflow-y-auto fitems-center md:inset-0 md:h-full">
+                            <div class="relative w-full h-full max-w-full p-4 md:h-auto">
+                                <!-- Modal content -->
+                                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                                    <!-- Modal header -->
+                                    <div class="flex items-center justify-between pb-4 mb-4 border-b rounded-t sm:mb-5 dark:border-gray-600">
+                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                            Add Announcement / Notice
+                                        </h3>
+
+                                    </div>
+                                    <!-- Modal body -->
+
+                                    <form action="#">
+                                        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                                            <div>
+                                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                                                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                            </div>
+                                            <div>
+                                                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                                                <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required="">
+                                            </div>
+                                            <div class="w-full col-span-2 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+
+
+
+                                                <textarea id="default">
+      Welcome to TinyMCE! dawdawdadsdawda
+    </textarea>
+
+                                            </div>
+
+
+                                        </div>
+                                        <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                            <svg class="w-6 h-6 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            Add new product
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            figure.image {
+                                display: inline-block;
+                                border: 1px solid gray;
+                                margin: 0 2px 0 1px;
+                                background: #f5f2f0;
+                            }
+
+                            figure.align-left {
+                                float: left;
+                            }
+
+                            figure.align-right {
+                                float: right;
+                            }
+
+                            figure.image img {
+                                margin: 8px 8px 0 8px;
+                            }
+
+                            figure.image figcaption {
+                                margin: 6px 8px 6px 8px;
+                                text-align: center;
+                            }
+
+
+                            /*
+ Alignment using classes rather than inline styles
+ check out the "formats" option
+*/
+
+                            img.align-left {
+                                float: left;
+                            }
+
+                            img.align-right {
+                                float: right;
+                            }
+
+                            /* Basic styles for Table of Contents plugin (toc) */
+                            .mce-toc {
+                                border: 1px solid gray;
+                            }
+
+                            .mce-toc h2 {
+                                margin: 4px;
+                            }
+
+                            .mce-toc li {
+                                list-style-type: none;
+                            }
+                        </style>
+
+                    <?php
+                        //  include 'components/createAnnouncement.php';
+                    } else {
+
+                    ?>
+                        <!-- <div id="listAnnouncements" class="mt-4">
                         <div class="px-8 pt-6 pb-8 mb-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <h2 class="mb-4 text-xl dark:text-white">Announcements</h2>
+                            <h2 class="mb-4 text-xl font-bold dark:text-white">Announcements</h2>
                             <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                                     <div class="w-full md:w-1/2">
                                         <form class="flex items-center">
@@ -70,11 +228,11 @@
                                         </form>
                                     </div>
                                     <div class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                                        <button id="ResdidentModalButton" data-modal-target="ResdidentModal" data-modal-toggle="ResdidentModal" type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                        <button id="AnnouncementModalButton" data-modal-target="AnnouncementModal" data-modal-toggle="AnnouncementModal" type="button" class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                                             </svg>
-                                            Add Resident
+                                            Add Announcement
                                         </button>
                                         <div class="flex items-center w-full space-x-3 md:w-auto">
                                             <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown" class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
@@ -139,7 +297,6 @@
                                         </tr>
                                     </thead>
                                     <tbody class="">
-                                        <!-- Repeat this block for each announcement -->
                                         <tr>
                                             <td class="px-5 py-5 text-sm bg-white dark:bg-gray-800">
                                                 <div class="flex items-center">
@@ -160,103 +317,29 @@
                                             <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
                                             </td>
                                         </tr>
-                                        <!-- End of announcement block -->
+                                  
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div id="createAnnouncement" class="hidden">
-                        <!-- Create Announcement Form -->
-                        <div class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md dark:bg-gray-800 dark:text-white">
-                            <h2 class="mb-4 text-xl">Create Announcement</h2>
-                            <form action="/path-to-your-backend" method="POST" enctype="multipart/form-data">
-                                <div class="mb-4">
-                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="title">
-                                        Title
-                                    </label>
-                                    <input
-                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:text-gray-200"
-                                        id="title" type="text" placeholder="Enter announcement title" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="description">
-                                        Description
-                                    </label>
-                                    <textarea
-                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none dark:bg-gray-600 dark:text-gray-200 dark:text-gray-400 focus:outline-none focus:shadow-outline"
-                                        id="description" placeholder="Enter announcement details" rows="4"
-                                        required></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-gray-400" for="imageUpload">
-                                        Upload Images/Files
-                                    </label>
-                                    <input
-                                        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="imageUpload" type="file" multiple onchange="previewFiles()">
-                                    <div id="preview" class="mt-4">
-                                        <!-- Image preview will be displayed here -->
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <button
-                                        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                                        type="submit">
-                                        Publish Announcement
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    <?php }  ?>
+                </div>
+
+
+
+            </main>
+
+
+            <?php require 'components/footer.php';
+
+            ?>
         </div>
-
-
-
-        </main>
-
-        <?php require 'components/footer.php';?>
     </div>
-    </div>
+
     <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
-    <script>
-    function switchTab(tabName) {
-        if (tabName === 'list') {
-            document.getElementById('listAnnouncements').classList.remove('hidden');
-            document.getElementById('createAnnouncement').classList.add('hidden');
-        } else if (tabName === 'create') {
-            document.getElementById('createAnnouncement').classList.remove('hidden');
-            document.getElementById('listAnnouncements').classList.add('hidden');
-        }
-    }
 
-    function previewFiles() {
-        var preview = document.querySelector('#preview');
-        var files = document.querySelector('input[type=file]').files;
-
-        function readAndPreview(file) {
-            // Make sure `file.name` matches our extensions criteria
-            if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                var reader = new FileReader();
-
-                reader.addEventListener("load", function() {
-                    var image = new Image();
-                    image.height = 100;
-                    image.title = file.name;
-                    image.src = this.result;
-                    preview.appendChild(image);
-                }, false);
-
-                reader.readAsDataURL(file);
-            }
-        }
-
-        if (files) {
-            [].forEach.call(files, readAndPreview);
-        }
-    }
-    </script>
 </body>
 
 </html>
