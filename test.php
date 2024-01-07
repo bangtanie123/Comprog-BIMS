@@ -4,7 +4,7 @@
     <!-- Replace 'no-api-key' in the link below with your API key -->
     <script src="https://cdn.tiny.cloud/1/46877zyhse80x7h0y2a1cv21dmq25v3t1ndzq6puboorqf9c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="js/tailwindcss.js"></script>
-  </head>
+
   <body>
     <script>
       tinymce.init({
