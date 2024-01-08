@@ -1,24 +1,4 @@
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-    <title>Barangy Dashboard</title>
-
-    <link rel="canonical" href="https://flowbite-admin-dashboard.vercel.app/" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <script src="js/tailwindcss.js"></script>
-    <script src="js/tailwind.config.js"></script>
-    <script src="js/system.js"></script>
-    <!-- Required the tailwind cli -->
-    <?php require 'css/tailwindcss.php'; ?>
-
-</head>
+<?php require_once 'head.php';?>
 
 <body class="bg-gray-50 dark:bg-gray-800">
 

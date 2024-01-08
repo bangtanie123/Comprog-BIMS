@@ -16,7 +16,7 @@ class AnnouncementModel
 
     public function getAnnouncements()
     {
-        $query = "SELECT * FROM announcements";
+        $query = "SELECT * FROM announcement order by created_at desc";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $results = $stmt->get_result();
@@ -24,12 +24,18 @@ class AnnouncementModel
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addAnnouncement($title, $content, $author, $status)
+    public function addAnnouncement($title, $content, $author, $status, $date)
     {
-        $query = "INSERT INTO announcement (`title`, `content`, `author`, `status` ) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO announcement (`title`, `content`, `author`, `status`, `created_at`  ) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssss", $title, $content, $author, $status);
+        $stmt->bind_param("sssss", $title, $content, $author, $status, $date);
 
+        return $stmt->execute();
+    }
+    public function deleteAnnouncement($id){
+        $query = "DELETE FROM announcement WHERE id =?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
 }

@@ -1,54 +1,4 @@
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-    <title>Barangy Dashboard | profile</title>
-
-    <link rel="canonical" href="https://flowbite-admin-dashboard.vercel.app/" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"  rel="stylesheet" /> -->
-
-    <link rel="stylesheet" href="css/profile.css">
-
-    <!-- Required the tailwind cli -->
-    <?php require 'css/tailwindcss.php'; ?>
-
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    clifford: "#da373d",
-                },
-            },
-        },
-        darkMode: 'class',
-
-    };
-    </script>
-
-
-    <script>
-    if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-        document.documentElement.classList.add("dark");
-    } else {
-        document.documentElement.classList.remove("dark");
-    }
-    </script>
-
-</head>
+<?php require_once 'head.php'; ?>
 
 <body class="bg-gray-50 dark:bg-gray-800">
 
@@ -133,7 +83,7 @@
                                             Upload picture
                                         </button>
                                         <button type="button"
-                                            class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            class="px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                             Delete
                                         </button>
                                     </div>
@@ -550,7 +500,7 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="••••••••" required="">
                                         <div data-popover="" id="popover-password" role="tooltip"
-                                            class="absolute z-10 inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400 opacity-0 invisible"
+                                            class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
                                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(765px, 987px);"
                                             data-popper-placement="bottom">
                                             <div class="p-3 space-y-2">
