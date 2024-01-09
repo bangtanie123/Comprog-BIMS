@@ -1,5 +1,6 @@
 {
     "require": {
-        "tinymce/tinymce": "^6.8"
+        "tinymce/tinymce": "^6.8",
+        "facebook/graph-sdk": "^5.1"
     }
 }

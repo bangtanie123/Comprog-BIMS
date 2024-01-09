@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Replace 'no-api-key' in the link below with your API key -->
-    <script src="https://cdn.tiny.cloud/1/46877zyhse80x7h0y2a1cv21dmq25v3t1ndzq6puboorqf9c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="js/tailwindcss.js"></script>
+<?php 
+require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
+session_start();
+$fb = new \Facebook\Facebook([
+  'app_id' => '1127164128694028',
+  'app_secret' => 'd04a641a714d6a707780e73dbdebc42a',
+  'default_graph_version' => 'v18.0',
+  'persistent_data_handler'=>'session'
+]);
 
-  <body>
-    <script>
-      tinymce.init({
-        selector: 'textarea#default',
-        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-          { value: 'First.Name', title: 'First Name' },
-          { value: 'Email', title: 'Email' },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-      });
-    </script>
-    <div class="w-full h-screen bg-gray-600 p-7">
-    <textarea id="default" rows="10">
-      Welcome to TinyMCE! dawdawdadsdawda
-    </textarea>
-    </div>
-  
-  </body>
-</html>
+$helper = $fb->getRedirectLoginHelper();
+
+
+$permissions = ['email']; // optional
+$loginUrl = $helper->getLoginUrl('http://localhost:5000/login.php', $permissions);
+// $fb->getRedirectLoginHelper()->setRedirectUrl('index.php');
+
+
+
+
+
+?>
+
+
+<a href="<?php echo $loginUrl;?>">
+  login with facebook
+</a>

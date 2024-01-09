@@ -9,11 +9,6 @@ class AnnouncementModel
         $this->db = $dbConnection;
     }
 
-    public function __destruct()
-    {
-        $this->db->close();
-    }
-
     public function getAnnouncements()
     {
         $query = "SELECT * FROM announcement order by created_at desc";

@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script>
+    <script src="js/flowbite.js"></script>
 
 </body>
 
