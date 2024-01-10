@@ -30,10 +30,11 @@
                             <p class="text-xs itaÉlic text-red-500">Please choose a username.</p>
                         </label>
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
-                            Password
+                            PASSWORD
                             <input class="w-full px-3 py-2 mb-3 leading-tight border border-red-500 rounded shadow appearance-none text-gray- 700 focus:outline-none focus:shadow-outline" id="password" type="password" name="
                             password" placeholder="******************">
                             <p class="text-xs italic text-red-500">Please choose a password.</p>
+                            <H1>HELLO LUKANIT</H1>
                         </label>
                     </div>
                 </form>
