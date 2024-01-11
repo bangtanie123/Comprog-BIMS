@@ -32,12 +32,18 @@
                         <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
                             PASSWORD
                             <input class="w-full px-3 py-2 mb-3 leading-tight border border-red-500 rounded shadow appearance-none text-gray- 700 focus:outline-none focus:shadow-outline" id="password" type="password" name="
-                            password" placeholder="******************">
+                            password" placeholder="********">
                             <p class="text-xs italic text-red-500">Please choose a password.</p>
-                            <H1>HELLO LUKANIT</H1>
+                           
                         </label>
                     </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Login
+                </button>
                 </form>
+                <div>
+                  <p>Don't have account? <a href="signup.php" class="text-blue-500">Create Here</a></p>
+                </div>
             </div>
         </div>	
     </div>
