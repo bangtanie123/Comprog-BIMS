@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <div class="flex h-screen">
 
     <!-- Sidebar -->
     <div class="flex w-[16rem] h-screen bg-gray-200">
@@ -84,9 +84,34 @@
             </ul>
         </div>
     </div>
-    <!-- Hello -->
+    <main class="flex-1">
+        <!-- Main dashboard Content -->
+        <div class="">
+            <div class="max-w-full mx-auto overflow-hidden bg-blue-100 rounded-lg shadow-sm">
+                <div class="px-4 py-2">
+                    <h1 class="text-2xl font-semibold text-gray-900">Welocome to Dashboard</h1>
+                    <p class="mt-1 text-sm text-gray-600">
+                      Admin
+                    </p>
 
+                </div>
+            </div>
+               
+            <div class="mt-8">
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                                hello
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
+</div>
 </body>
 
 </html>
