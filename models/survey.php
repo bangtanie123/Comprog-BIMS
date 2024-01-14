@@ -1,7 +1,6 @@
 <?php 
 
-require "config.php";
-require_once "vendor/autoload.php";
+
 // CREATE TABLE
 // `Survey` (
 //     `ID` int(255) NOT NULL AUTO_INCREMENT,
@@ -45,13 +44,48 @@ class Survey extends MysqliDb {
         return $this->get($this->tableName, $limit);
     }
 
-    // show 20 results in one page and panginate it
-    public function getPaginatedSurveys($limit, $page) {
-        $this->where('ID >', $page * $limit);
-        $this->where('ID <=', $page * $limit + $limit);
-        return $this->get($this->tableName, $limit);
+//    function that will panginate the results for 20 data per page 
+/**
+     * Get paginated surveys.
+     *
+     * @param int $page The page number.
+     * @param int $resultsPerPage The number of results per page. Default is 20.
+     * @return array The paginated survey results.
+     */
+    public function getPaginatedSurveys($page, $resultsPerPage, $searchValue = '', $orderByColumn = 'FirstName', $orderDirection = 'ASC') {
+        $offset = ($page - 1) * $resultsPerPage;
+    
+        // Get total count without any filters
+        $this->withTotalCount();
+        $totalRecords = $this->getValue($this->tableName, "count(*)");
+    
+        // Apply search filter if provided
+        if (!empty($searchValue)) {
+            $this->where('FirstName', '%' . $searchValue . '%', 'LIKE');
+            $this->orWhere('LastName', '%' . $searchValue . '%', 'LIKE');
+        }
+    
+        // Get total count with filters
+        $this->withTotalCount();
+        $filteredRecords = $this->getValue($this->tableName, "count(*)");
+    
+        // Apply ordering
+        $this->orderBy($orderByColumn, $orderDirection);
+    
+        // Get paginated results
+        $results = $this->get($this->tableName, [$offset, $resultsPerPage]);
+    
+        // Calculate total pages after filtering
+        $totalPages = ceil($filteredRecords / $resultsPerPage);
+    
+        return [
+            'draw' => $page, // Assuming 'draw' is equivalent to the current page number
+            'recordsTotal' => $totalRecords,
+            'recordsFiltered' => $filteredRecords,
+            'data' => $results,
+            'totalPages' => $totalPages
+        ];
     }
-
    public function addSurvey($data) {
         return $this->insert($this->tableName, $data);
     }

@@ -11,6 +11,30 @@ class ComposerStaticInit10b28516f81d5eda89055c27ffb0b913
         'd383f1ec7b1e54a09cb53eb6fcf751e0' => __DIR__ . '/..' . '/thingengineer/mysqli-database-class/dbObject.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Cache\\' => 10,
+            'Phpfastcache\\' => 13,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Phpfastcache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpfastcache/phpfastcache/lib/Phpfastcache',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -18,6 +42,8 @@ class ComposerStaticInit10b28516f81d5eda89055c27ffb0b913
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit10b28516f81d5eda89055c27ffb0b913::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit10b28516f81d5eda89055c27ffb0b913::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit10b28516f81d5eda89055c27ffb0b913::$classMap;
 
         }, null, ClassLoader::class);
